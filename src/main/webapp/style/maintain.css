@@ -1,0 +1,15 @@
+fieldset {
+  border:0px;
+}
+ fieldset label {
+  float:left	;
+  width:80px;
+  text-align:right;
+  padding:4px;
+  margin:0px;
+ }
+ fieldset div {
+  clear:left;
+  margin-bottom:0px;
+}	
+

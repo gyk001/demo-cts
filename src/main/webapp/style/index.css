@@ -1,0 +1,61 @@
+#basic_info tr {
+	height: 25px;
+}
+
+#basic_info td {
+	padding: 0 4px;
+}
+
+#top,#content {
+	width: 100%;
+}
+
+#top {
+	height: 25px;
+}
+
+#top .normal {
+	width: 170px;
+	height: 18px;
+	text-align: center;
+	vertical-align: center;
+	line-height: 18px;
+	font-size: 10px;
+	border: 1px solid #ccc;
+	cursor: pointer;
+}
+
+#top .toJob {
+	text-decoration: none;
+}
+
+#top #back {
+	float: left;
+}
+
+#top #viewjobs {
+	width: 150px;
+	float: right;
+}
+
+.ftitle {
+	font-size: 14px;
+	font-weight: bold;
+	padding: 5px 0;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #ccc;
+}
+
+#layout_left_menu ul {
+	padding-left: 0px;
+}
+
+#layout_left_menu li {
+	padding-bottom: 2px;
+	list-style: none;
+}
+
+#layout_left_menu li a {
+	text-decoration: none;
+	color: #000;
+}
