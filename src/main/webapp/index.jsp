@@ -52,7 +52,7 @@ fit:true
 		    <div title="信息管理" data-options="iconCls:'icon-sum',selected:true" style="overflow:auto;padding:10px;">  
 		        <ul style="font-size:12px;margin-left:14px;">
 		        	<li><a id="menu_dealer" href="#dealer">经销商查询</a></li>
-					<li><a id="menu_way" href="#way">整车在途查询</a></li>
+					<li><a id="menu_car" href="#car">整车在途查询</a></li>
 					<li><a id="menu_logistics" href="#logistics">物流公司查询</a></li>
 					<li><a id="menu_lorry" href="#lorry">物流车查询</a></li>
 					<li><a id="menu_changpwd" href="#changpwd">修改密码</a></li>

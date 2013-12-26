@@ -33,7 +33,7 @@
                         <label for="search_SFTY">是否停业:</label>
                         <input type="text" class="combo-text" id="search_SFTY" style="width: 60px;" />
 						&nbsp;&nbsp;
-                        <a id="btn_search" href="javascript:void(0);" class="easyui-linkbutton" iconcls="icon-search"> 搜索 </a>
+                        <a id="btn_search" href="javascript:void(0);" class="easyui-linkbutton" iconcls="icon-search"> 查询 </a>
                     </td>
                 </tr>
             </table>

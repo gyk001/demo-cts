@@ -30,12 +30,12 @@ public abstract class BaseDao {
 		jdbcTemplate.update(DEL, id);
 	}
 	
-	public long getDealerCount(){
-		return getDealerCount(null);
+	public long getCount(){
+		return getCount(null);
 	}
 	
 	@SuppressWarnings("deprecation")
-	public long getDealerCount(Map<String,Object> cond){
+	public long getCount(Map<String,Object> cond){
 		List<Object> values = new ArrayList<Object>();
 		StringBuffer sql = new StringBuffer(SEL_COUNT);
 		if(cond!=null){
@@ -58,11 +58,11 @@ public abstract class BaseDao {
 		return jdbcTemplate.queryForLong(sql.toString(),values.toArray());
 	}
 
-	public List<Map<String, Object>> getDealerList(int page,int rows){
-		return getDealerList(page, rows, null);
+	public List<Map<String, Object>> getList(int page,int rows){
+		return getList(page, rows, null);
 	}
 	
-	public List<Map<String, Object>> getDealerList(int page,int rows, Map<String,Object> cond){
+	public List<Map<String, Object>> getList(int page,int rows, Map<String,Object> cond){
 		int start = (page-1) * rows;
 		List<Object> values = new ArrayList<Object>();
 		StringBuffer sql = new StringBuffer(SEL_LIST);

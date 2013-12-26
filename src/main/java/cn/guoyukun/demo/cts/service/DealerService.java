@@ -21,18 +21,18 @@ public class DealerService {
 	private DealerDao dealerDao;
 	
 	public List<Map<String, Object>> getDealerList(int page, int rows){
-		return dealerDao.getDealerList(page, rows);
+		return dealerDao.getList(page, rows);
 	}
 	public long getDealerCount(){
-		return dealerDao.getDealerCount();
+		return dealerDao.getCount();
 	}
 	
 	public List<Map<String, Object>> getDealerList(int page, int rows, Map<String,Object> params){
-		return dealerDao.getDealerList(page, rows, params);
+		return dealerDao.getList(page, rows, params);
 	}
 	
 	public long getDealerCount(Map<String,Object> params){
-		return dealerDao.getDealerCount(params);
+		return dealerDao.getCount(params);
 	}
 	
 	public void deleteDealer(String jxsdm){
