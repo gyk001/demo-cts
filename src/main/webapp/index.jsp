@@ -8,7 +8,6 @@
 <%@include file="/common-head.jsp" %>
 <%-- 引用页面自己的js和css --%>
 <script type="text/javascript" src="biz/main.js"></script>
-<script type="text/javascript" src="biz/biz.js"></script>
 <%
 	final Date timeStart = new Date();
 %>
@@ -52,10 +51,12 @@ fit:true
 		<div id="layout_left_menu" class="easyui-accordion" data-options="fit:true,border:false">  
 		    <div title="信息管理" data-options="iconCls:'icon-sum',selected:true" style="overflow:auto;padding:10px;">  
 		        <ul style="font-size:12px;margin-left:14px;">
-		        		<li><a id="menu_dealer" href="#dealer">经销商查询</a></li>
+		        	<li><a id="menu_dealer" href="#dealer">经销商查询</a></li>
 					<li><a id="menu_way" href="#way">整车在途查询</a></li>
 					<li><a id="menu_logistics" href="#logistics">物流公司查询</a></li>
+					<li><a id="menu_lorry" href="#lorry">物流车查询</a></li>
 					<li><a id="menu_changpwd" href="#changpwd">修改密码</a></li>
+					<li><a id="menu_init" href="#init">系统初始化</a></li>
 				</ul>
 		    </div>  
 		    <div title="统计报表" data-options="iconCls:'icon-sum'" style="padding:10px;">  

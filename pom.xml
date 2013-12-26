@@ -9,6 +9,8 @@
 	<groupId>cn.guoyukun.demo</groupId>
 	<artifactId>cts</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>cts</name>
 	<description>Car Transport System</description>
 	<properties>
 		<project.test.fileEncoding>UTF-8</project.test.fileEncoding>
@@ -50,6 +52,16 @@
 			</exclusions>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>3.2.6.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>3.2.6.RELEASE</version>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-spring</artifactId>
 			<version>1.2.2</version>
@@ -60,6 +72,35 @@
 			<artifactId>gson</artifactId>
 			<version>2.1</version>
 		</dependency>
+		<!-- Jackson JSON -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.2.2</version>
+		</dependency>
+		<!-- 连接池 -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>0.2.26</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.27</version>
+			<scope>runtime</scope>
+		</dependency>
+	            
 		<!-- 单元测试 -->
 		<dependency>
 			<groupId>org.testng</groupId>
@@ -72,6 +113,7 @@
 			<artifactId>jodd-core</artifactId>
 			<version>3.4.9</version>
 		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>
@@ -105,7 +147,7 @@
 				<configuration>
 					<stopPort>9966</stopPort>
 					<stopKey>stop-cts</stopKey>
-					<scanIntervalSeconds>10</scanIntervalSeconds>
+					<scanIntervalSeconds>5</scanIntervalSeconds>
 					<webApp>
 						<contextPath>/cts</contextPath>
 					</webApp>
@@ -113,6 +155,5 @@
 			</plugin>
 		</plugins>
 	</build>
-	<packaging>war</packaging>
-	<name>cts</name>
+
 </project>

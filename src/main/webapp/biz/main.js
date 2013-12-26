@@ -137,7 +137,6 @@
 	var enableDeepLink = function(){
 		// Initializes plugin features
 	    $.address.strict(false).wrap(true);
-	    
 	    if ($.address.value() == '') {
 	        $.address.history(false).value('dealer').history(true);
 	    }
@@ -166,12 +165,22 @@
 	    	 }
 	     });	
 	};
+	
+	
+	
+	var ajaxFailCheck = function(){
+		$(document).ajaxComplete(function( event, xhr, settings ) {
+			debugger;
+		});
+	}
 	 
 	$(function() {
-		
+		ajaxFailCheck();
 		moment.lang('zh-cn');
 		// 开启
 		enableDeepLink();
+		
+		
 		//左侧菜单点击事件
 		$('#layout_left_menu ul a').click(function(){
 			clickMenuLink($(this));
