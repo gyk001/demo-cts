@@ -55,6 +55,7 @@ fit:true
 					<li><a id="menu_car" href="#car">整车在途查询</a></li>
 					<li><a id="menu_logistics" href="#logistics">物流公司查询</a></li>
 					<li><a id="menu_lorry" href="#lorry">物流车查询</a></li>
+					<li><a id="menu_map" href="#map">地图实时跟踪</a></li>
 					<li><a id="menu_changpwd" href="#changpwd">修改密码</a></li>
 					<li><a id="menu_init" href="#init">系统初始化</a></li>
 				</ul>
