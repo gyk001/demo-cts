@@ -46,12 +46,13 @@
         <property name="filterChainDefinitions">  
             <value>  
                 /login=anon
+                /dologin=anon
+                /logout=anon
                 /static/**=anon
-                /main**=authc  
-                /user/info**=authc  
+                /biz/**=anon
+                /style/**=anon
                 /admin/listUser**=authc,perms[admin:manage]
                 /**=authc 
-                 
             </value>  
         </property>  
     </bean>  

@@ -56,8 +56,11 @@ fit:true
 					<li><a id="menu_logistics" href="#logistics">物流公司查询</a></li>
 					<li><a id="menu_lorry" href="#lorry">物流车查询</a></li>
 					<li><a id="menu_map" href="#map">地图实时跟踪</a></li>
+					<!-- 
 					<li><a id="menu_changpwd" href="#changpwd">修改密码</a></li>
 					<li><a id="menu_init" href="#init">系统初始化</a></li>
+					 -->
+					<li><a id="menu_logout" href="logout">退出</a></li>
 				</ul>
 		    </div>  
 		    <div title="统计报表" data-options="iconCls:'icon-sum'" style="padding:10px;">  

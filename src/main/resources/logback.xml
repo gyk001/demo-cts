@@ -13,5 +13,6 @@
 	<root level="DEBUG">
 		<appender-ref ref="stdout" />
 	</root>
+	<logger name="org.springframework.web.servlet.handler" level="INFO"></logger>
 	<logger name="org.apache.cxf" level="INFO"></logger>
 </configuration>
