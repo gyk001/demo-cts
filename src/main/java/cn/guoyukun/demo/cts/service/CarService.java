@@ -23,7 +23,7 @@ public class CarService {
 	public List<Map<String, Object>> getList(int page, int rows){
 		return carDao.getList(page, rows);
 	}
-	public long getDealerCount(){
+	public long getCount(){
 		return carDao.getCount();
 	}
 	

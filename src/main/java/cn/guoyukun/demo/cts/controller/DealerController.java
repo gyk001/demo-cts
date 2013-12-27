@@ -44,21 +44,21 @@ public class DealerController {
 	@RequestMapping("/list")
 	@ResponseBody
 	public Map<String,Object> list(HttpServletRequest req,
-			@RequestParam(required=false) String code,
 			@RequestParam(required=true) Integer page,
 			@RequestParam(required=true) Integer rows
 			){
-		logger.debug(code);
-		
-		final List<Map<String,Object>> list = dealerService.getDealerList(page, rows, processParams(req));
-		
-		return new HashMap<String,Object>(){
-			private static final long serialVersionUID = 1L;
-		{
-			put("total",dealerService.getDealerCount());
-			put("success",true);
-			put("rows", list);
-		}};
+		Map<String,Object> result =  new HashMap<String,Object>();
+		try{
+			final Map<String,Object> params = processParams(req);
+			final List<Map<String,Object>> list = dealerService.getDealerList(page, rows, params);
+			final long total = dealerService.getDealerCount(params);
+			result.put("total",total);
+			result.put("rows", list);
+			result.put("success",true);
+		}catch(Exception e){
+			result.put("success",false);
+		}
+		return result;
 	}
 	
 	@RequestMapping("/delete/{SJXDM}")

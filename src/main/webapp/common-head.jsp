@@ -8,7 +8,7 @@
 %>
 <base href="<%=_basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="shortcut icon" href="static/img/favicon.ico" mce_href="static/img/favicon.ico" type="image/x-icon"/>
+<link rel="shortcut icon" href="static/img/icon.jpg" mce_href="static/img/icon.jpg" type="image/x-icon"/>
 <!-- jquery -->
 <script type="text/javascript" src="static/jquery-1.9.1/jquery.min.js"></script>
 <!-- jquery老版本兼容补丁 --> 

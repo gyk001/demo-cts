@@ -38,16 +38,18 @@ public class CarController {
 			@RequestParam(required=true) Integer page,
 			@RequestParam(required=true) Integer rows
 			){
-		
-		final List<Map<String,Object>> list = carService.getList(page, rows, processParams(req));
-		
-		return new HashMap<String,Object>(){
-			private static final long serialVersionUID = 1L;
-		{
-			put("total",carService.getDealerCount());
-			put("success",true);
-			put("rows", list);
-		}};
+		Map<String,Object> result =  new HashMap<String,Object>();
+		try{
+			final Map<String,Object> params = processParams(req);
+			final List<Map<String,Object>> list = carService.getList(page, rows, params);
+			final long total = carService.getCount(params);
+			result.put("total",total);
+			result.put("rows", list);
+			result.put("success",true);
+		}catch(Exception e){
+			result.put("success",false);
+		}
+		return result;
 	}
 	
 	@RequestMapping("/delete/{id}")

@@ -19,7 +19,7 @@ $(function(){
 	updateTime(moment(serverTime),moment(startTime));
 });
 </script>
-<title>途车管理系统</title>
+<title>整车物流在途监控系统</title>
 </head>
 <body class="easyui-layout" style="margin: 1px;" data-options="
 fit:true

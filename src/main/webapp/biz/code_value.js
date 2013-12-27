@@ -21,6 +21,12 @@ window.cv = {
 		"东区":"东区",
 		"北区":"北区",
 		"南区":"南区"
+	},
+	logistics:{
+		"L-CJ":"长久物流",
+		"L-HY":"华阳物流",
+		"L-ZT":"中通物流",
+		"L-ZY":"中远物流"
 	}
 };
 function cv2combo(cv, hasAll){ 

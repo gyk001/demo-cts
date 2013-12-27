@@ -9,7 +9,7 @@
 			//param.total=total;
 		}
 		param.VIN = $('#search_vin').val();
-		param.logistics = $('#search_logistics').val();
+		param.logistics = $('#search_logistics').combobox('getValue');
 	};
 	
 
@@ -36,7 +36,13 @@
 		var btn = '&nbsp;&nbsp;<a href="javascript:deleteCar(&apos;'+code+'&apos;);" class="easyui-linkbutton" data-options="iconCls:&apos;icon-cancel&apos;">删除</a>';
 		return btn;
 	};
-	
+	var formatLogistics = function(val, row){
+		if(val){
+			return cv.logistics[val];
+		}else{
+			return '--';
+		}
+	};
 	//操作列
 	var formatAction = function (val,row){
 		return makeDeleteBtn(row.VIN);
@@ -55,7 +61,10 @@
 			columns:[
 						[
 						 	{field:'VIN',width:90,title:'车辆识别码'},
-							{field:'logistics',width:120,title:'物流公司'},
+							{field:'logistics',width:120,title:'物流公司',formatter:formatLogistics},
+							{field:'lorry',width:120,title:'物流车号'},
+							{field:'dealer',width:120,title:'经销商'},
+							{field:'arrive',width:120,title:'是否到店'},
 							{field:'action',width:160,title:'操作',formatter:formatAction}
 					 	]
 					]
@@ -81,6 +90,16 @@
     
 	
 	$(function(){
+		// 初始化下拉框：区域
+		$('#search_logistics').combobox({
+			url: 'logistics/list?page=1&rows=10',
+			loadFilter:function(data){return data.rows},
+	        method: 'get',
+	        valueField: 'CODE',
+	        textField: 'NAME',
+	        panelHeight:'auto'
+		});
+		
 		// 查询按钮绑定click事件，并click
 		$('#btn_search').click(search).click();
 		
