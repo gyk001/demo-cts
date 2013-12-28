@@ -1,5 +1,10 @@
 package cn.guoyukun.demo.cts.service;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.apache.shiro.SecurityUtils;
@@ -24,6 +29,16 @@ public class LoginService {
 		Subject currentUser = SecurityUtils.getSubject();
 		//已经登录过，不用再次认证
 		return currentUser.isAuthenticated();
+	}
+	
+	public static String getLoginRoleName(HttpServletRequest req){
+		String role = (String) req.getAttribute("role");
+		Map<String,String> roles = new HashMap<String,String>(){{
+			put("admin","管理员");
+			put("dealer","物流公司");
+			put("logistics","经销商");
+		}};
+		return roles.get(role);
 	}
 	
 	public void login(String username, String password) throws AuthenticationException{

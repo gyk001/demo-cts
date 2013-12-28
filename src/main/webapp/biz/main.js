@@ -173,8 +173,9 @@
 			debugger;
 		});
 	}
-	 
+	
 	$(function() {
+		
 		ajaxFailCheck();
 		moment.lang('zh-cn');
 		// 开启

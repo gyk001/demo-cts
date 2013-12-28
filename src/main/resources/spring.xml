@@ -48,10 +48,11 @@
                 /login=anon
                 /dologin=anon
                 /logout=anon
+                /unauth=anon
                 /static/**=anon
                 /biz/**=anon
                 /style/**=anon
-                /admin/listUser**=authc,perms[admin:manage]
+                /dealer/delete/**=authc,roles[admin]
                 /**=authc 
             </value>  
         </property>  
@@ -65,4 +66,7 @@
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">  
         <property name="realm" ref="myRealm"/>  
     </bean>  
+    <bean id="lifecycleBeanPostProcessor" 
+    		class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/> 
+
 </beans>

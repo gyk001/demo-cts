@@ -1,3 +1,4 @@
+<%@page import="cn.guoyukun.demo.cts.service.LoginService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="java.util.Date"%>
@@ -13,9 +14,10 @@
 %>
 <script type="text/javascript">
 $(function(){
-
+	window.userRole = '<%=request.getSession().getAttribute("role") %>';
 	var serverTime = <%= new Date().getTime()%>;
 	var startTime = <%= timeStart.getTime()%>;
+	
 	updateTime(moment(serverTime),moment(startTime));
 });
 </script>
@@ -46,7 +48,7 @@ fit:true
 		</div>
 	 -->
 	<!-- west 左边栏 -->
-	<div data-options="region:'west',split:true" title="平台管理" style="width: 200px;">
+	<div data-options="region:'west',split:true" title="用户：<%=session.getAttribute("username") %>[<%=LoginService.getLoginRoleName(request) %>]" style="width: 200px;">
 	
 		<div id="layout_left_menu" class="easyui-accordion" data-options="fit:true,border:false">  
 		    <div title="信息管理" data-options="iconCls:'icon-sum',selected:true" style="overflow:auto;padding:10px;">  
@@ -68,25 +70,9 @@ fit:true
 					<li><a id="menu_report_year" href="#report_year">年报表</a></li>
 					<li><a id="menu_report_month" href="#report_month">月报表</a></li>
 					<li><a id="menu_report_day" href="#report_day">日报表</a></li>
-					<li><a id="menu_report_sta" href="#report_sta">对账</a></li>
-					<!-- 
-					<li><a id="menu_client_status" href="#">前置机状态</a></li>
-					<li><a id="menu_data_quality" href="#">数据质量监控</a></li>
-					<li><a id="menu_data_quality_config" href="#">数据质量统计配置</a></li>
-					 -->
+					
 				</ul>
 		    </div>  
-		    <!-- 
-		    <div title="应用管理" data-options="iconCls:'icon-sum'">  
-		         
-		    </div>
-		    <div title="发布订阅" data-options="iconCls:'icon-sum'">  
-		         <ul style="font-size:12px;margin-left:14px;">
-					<li><a id="menu_pub" href="#">发布维护</a></li>
-					<li><a id="menu_sub" href="#">订阅维护</a></li>
-				</ul> 
-		    </div>
-		     -->  
 		</div>  
 	</div>
 	

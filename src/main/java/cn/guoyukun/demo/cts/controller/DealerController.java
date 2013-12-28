@@ -33,14 +33,6 @@ public class DealerController {
 	@Resource
 	private DealerService dealerService;
 	
-	@RequestMapping("/l2.do")
-	public ModelAndView list2(HttpServletRequest req,
-			@RequestParam(required=false) String code
-			){
-		
-		return new ModelAndView("xx");
-	}
-	
 	@RequestMapping("/list")
 	@ResponseBody
 	public Map<String,Object> list(HttpServletRequest req,
@@ -61,11 +53,11 @@ public class DealerController {
 		return result;
 	}
 	
-	@RequestMapping("/delete/{SJXDM}")
+	@RequestMapping("/delete/{jxsdm}")
 	@ResponseBody
 	public Map<String,Object> delete(HttpServletRequest req, 
-			@PathVariable String SJXDM){
-		dealerService.deleteDealer(SJXDM);
+			@PathVariable(value="jxsdm") String jxsdm){
+		dealerService.deleteDealer(jxsdm);
 		
 		return new HashMap<String,Object>(){
 			private static final long serialVersionUID = 1L;

@@ -51,12 +51,18 @@ public class LoginController {
 	@RequestMapping("/"+PATH_DOLOGIN)
 	public ModelAndView doLogin4Form(HttpServletRequest request,
 			@RequestParam(required=false) String username,
-			@RequestParam(required=false)  String password){
+			@RequestParam(required=false)  String password,
+			@RequestParam(required=false)  String role){
 		try {
 			loginService.login(username, password);
 		} catch (AuthenticationException e) {
 			return goLoginPage(); 
 		}
+		// 用户名
+		request.getSession().setAttribute("username", username);
+		// 角色
+		request.getSession().setAttribute("role", role);
+	
 		return goMainPage();
 	}
 	
