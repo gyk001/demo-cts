@@ -14,6 +14,7 @@
 	<description>Car Transport System</description>
 	<properties>
 		<project.test.fileEncoding>UTF-8</project.test.fileEncoding>
+		<profile.active>dev</profile.active>
 	</properties>
 	<scm>
 		<connection>scm:git:https://github.com/gyk001/demo-cts.git</connection>
@@ -28,6 +29,7 @@
 		<system>travis-ci</system>
 		<url>https://travis-ci.org/gyk001/demo-cts</url>
 	</ciManagement>
+
 	<dependencies>
 		<!-- log -->
 		<dependency>
@@ -51,22 +53,22 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		 <dependency>
-		    <groupId> org.apache.cassandra</groupId>
-		    <artifactId>cassandra-all</artifactId>
-		    <version>0.8.1</version>
-		
-		    <exclusions>
-		      <exclusion> 
-		        <groupId>org.slf4j</groupId>
-		        <artifactId>slf4j-log4j12</artifactId>
-		      </exclusion>
-		      <exclusion> 
-		        <groupId>log4j</groupId>
-		        <artifactId>log4j</artifactId>
-		      </exclusion>
-		    </exclusions> 
-  		</dependency>
+		<dependency>
+			<groupId> org.apache.cassandra</groupId>
+			<artifactId>cassandra-all</artifactId>
+			<version>0.8.1</version>
+
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>log4j</groupId>
+					<artifactId>log4j</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
@@ -127,7 +129,13 @@
 			<version>5.1.27</version>
 			<scope>runtime</scope>
 		</dependency>
-	            
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.3.174</version>
+			<scope>runtime</scope>
+		</dependency>
+
 		<!-- 单元测试 -->
 		<dependency>
 			<groupId>org.testng</groupId>
@@ -140,20 +148,27 @@
 			<artifactId>jodd-core</artifactId>
 			<version>3.4.9</version>
 		</dependency>
-<dependency>
-	<groupId>org.apache.commons</groupId>
-	<artifactId>commons-lang3</artifactId>
-	<version>3.1</version>
-</dependency>
-<dependency>
-	<groupId>jstl</groupId>
-	<artifactId>jstl</artifactId>
-	<version>1.2</version>
-</dependency>
-            
-            
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+
 	</dependencies>
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -193,5 +208,27 @@
 			</plugin>
 		</plugins>
 	</build>
-
+	<profiles>
+		<profile>
+			<id>development</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<profiles.active>development</profiles.active>
+			</properties>
+		</profile>
+		<profile>
+			<id>test</id>
+			<properties>
+				<profiles.active>test</profiles.active>
+			</properties>
+		</profile>
+		<profile>
+			<id>production</id>
+			<properties>
+				<profiles.active>production</profiles.active>
+			</properties>
+		</profile>
+	</profiles>
 </project>
