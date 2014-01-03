@@ -29,7 +29,7 @@ fit:true
 	<!-- north logo区域  -->
 	<div data-options="region:'north'" style="height: 80px;overflow:hidden;">
 		<div style="background-color: rgb(76, 197, 232);">
-			<img alt="" src="static/img/top_upbg.jpg"/>
+			<img alt="" src="static/img/b.jpg"/>
 		</div>
 	</div>
 	<!-- south 底边栏 -->
@@ -39,7 +39,6 @@ fit:true
 		<span><strong>服务器时间：</strong><span id="footer_server_time"></span></span>
 		&nbsp;&nbsp;|&nbsp;&nbsp;
 		<span><strong>启动时间：</strong><span id="footer_start_time"></span></span>
-		<span style="float:right"><strong>技术支持：</strong>中科软科技股份有限公司</span>
 	</div>
 	<!-- East 右边栏 -->
 	<!-- 
@@ -48,7 +47,7 @@ fit:true
 		</div>
 	 -->
 	<!-- west 左边栏 -->
-	<div data-options="region:'west',split:true" title="用户：<%=session.getAttribute("username") %>[<%=LoginService.getLoginRoleName(request) %>]" style="width: 200px;">
+	<div data-options="region:'west',split:true,iconCls:'icon-sum'" title="<%=session.getAttribute("username") %>[<%=LoginService.getLoginRoleName(request) %>]" style="width: 200px;">
 	
 		<div id="layout_left_menu" class="easyui-accordion" data-options="fit:true,border:false">  
 		    <div title="信息管理" data-options="iconCls:'icon-sum',selected:true" style="overflow:auto;padding:10px;">  
@@ -65,6 +64,7 @@ fit:true
 					<li><a id="menu_logout" href="logout">退出</a></li>
 				</ul>
 		    </div>  
+		    <!-- 
 		    <div title="统计报表" data-options="iconCls:'icon-sum'" style="padding:10px;">  
 		        <ul style="font-size:12px;margin-left:14px;">
 					<li><a id="menu_report_year" href="#report_year">年报表</a></li>
@@ -72,7 +72,8 @@ fit:true
 					<li><a id="menu_report_day" href="#report_day">日报表</a></li>
 					
 				</ul>
-		    </div>  
+		    </div>
+		     -->  
 		</div>  
 	</div>
 	

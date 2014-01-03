@@ -39,10 +39,14 @@
 		var btn = '&nbsp;&nbsp;<a href="javascript:deleteDealer(&apos;'+code+'&apos;);" class="easyui-linkbutton" data-options="iconCls:&apos;icon-cancel&apos;">删除</a>';
 		return btn;
 	};
+	var makeEditBtn=function(code){
+		var btn = '&nbsp;&nbsp;<a href="javascript:editDealer(&apos;'+code+'&apos;);" class="easyui-linkbutton" data-options="iconCls:&apos;icon-edit&apos;">编辑</a>';
+		return btn;
+	};
 	
 	//操作列
 	var formatAction = function (val,row){
-		return makeDeleteBtn(row.JXSDM);
+		return [makeEditBtn(row.JXSDM),makeDeleteBtn(row.JXSDM)].join('');
 	};
 	
 	var opt = {
@@ -55,6 +59,7 @@
 			toolbar:'#toolbar', 
 			url:'dealer/list',
 			//pageList:[3,6,12],
+			idField:'JXSDM', //主键字段  
 			columns:[
 						[
 						 	{field:'JXSDM',width:90,title:'经销商代码'},
@@ -64,7 +69,7 @@
 							{field:'SHI',width:60,title:'所在市'},
 							{field:'QY',width:60,title:'区域'},
 							{field:'SFTY',width:60,title:'是否停业'},
-							{field:'action',width:160,title:'操作',formatter:formatAction}
+							{field:'action',width:190,title:'操作',formatter:formatAction}
 					 	]
 					]
 	};
@@ -87,7 +92,31 @@
         });
     };
     
+    var editDealer = function(code){
+    		var rows = $('#tbl_list').datagrid('getRows');
+    		var index = $('#tbl_list').datagrid('getRowIndex',code);
+    		var row = rows[index];
+    		$('#edit_form').form('load', row );
+    		$('#edit_form').attr('action','dealer/edit');
+    		$('input[name="JXSDM"]','#edit_form').attr('disabled',true);
+    		$('#edit_dlg').dialog('open');
+    }
+    
+    var clearEditForm = function(){
+    		$('#edit_form').form('clear');
+    };
+    
+    var addDealer = function(){
+    		$('#edit_form').attr('action','dealer/add');
+    		clearEditForm();
+    		$('input[name="JXSDM"]','#edit_form').attr('disabled',false);
+		$('#edit_dlg').dialog('open');
+    };
 	
+    var submitForm = function(){
+    		$('#edit_form').submit();
+    };
+    
 	$(function(){
 		// 初始化下拉框：区域
 		$('#search_QY').combobox({
@@ -101,9 +130,27 @@
 		$('#search_SYB').combobox({
 			data: cv2combo(cv.dealer_SYB, true)
 		});
+		// 添加按钮绑定click事件
+		$('#btn_add').click(addDealer);
 		// 查询按钮绑定click事件，并click
 		$('#btn_search').click(search).click();
 		
+		$('#edit_form').form({
+			success:function(json){
+				var data = $.parseJSON(json);
+	    			if(data && data.success){
+	    				$('#edit_dlg').dialog('close');
+	    				search();
+	    				$.messager.alert('Warning',data.msg || '成功');
+	    			}else{
+	    				$.messager.alert('Warning',data.msg || '失败');
+	    			}
+			}
+		});
+		
 		window.deleteDealer = deleteDealer;
+		window.editDealer = editDealer;
+		window.clearForm = clearEditForm;
+		window.submitForm = submitForm;
 	});
 })(jQuery);

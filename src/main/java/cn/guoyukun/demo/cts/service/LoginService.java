@@ -19,6 +19,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import cn.guoyukun.demo.cts.shiro.CtsRealm;
+
 @Service
 public class LoginService {
 	//日志对象
@@ -32,11 +34,11 @@ public class LoginService {
 	}
 	
 	public static String getLoginRoleName(HttpServletRequest req){
-		String role = (String) req.getAttribute("role");
+		String role = (String) req.getSession().getAttribute("roleType");
 		Map<String,String> roles = new HashMap<String,String>(){{
 			put("admin","管理员");
-			put("dealer","物流公司");
-			put("logistics","经销商");
+			put("logistics","物流公司");
+			put("dealer","经销商");
 		}};
 		return roles.get(role);
 	}

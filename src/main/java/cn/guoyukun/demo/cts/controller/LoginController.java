@@ -1,6 +1,9 @@
 package cn.guoyukun.demo.cts.controller;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import cn.guoyukun.demo.cts.service.LoginService;
+import cn.guoyukun.demo.cts.shiro.CtsRealm;
 
 @Controller
 public class LoginController {
@@ -55,14 +59,22 @@ public class LoginController {
 			@RequestParam(required=false)  String role){
 		try {
 			loginService.login(username, password);
+			// 用户名
+			request.getSession().setAttribute("username", username);
+			// 角色
+			request.getSession().setAttribute("roleType", role);
+			if("admin".equals(role)){
+				List<String> roles = new ArrayList<String>(){{
+					add("dealer");
+					add("logistics");
+				}};
+				CtsRealm.setSession("role",roles);
+			}else{
+				CtsRealm.setSession("role",role);
+			}
 		} catch (AuthenticationException e) {
 			return goLoginPage(); 
 		}
-		// 用户名
-		request.getSession().setAttribute("username", username);
-		// 角色
-		request.getSession().setAttribute("role", role);
-	
 		return goMainPage();
 	}
 	

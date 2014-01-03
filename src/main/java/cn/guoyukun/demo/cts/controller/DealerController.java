@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import cn.guoyukun.demo.cts.service.DealerService;
 
@@ -66,6 +65,37 @@ public class DealerController {
 		}};
 	}
 	
+	@RequestMapping("/edit")
+	@ResponseBody
+	public Map<String,Object> edit(HttpServletRequest req){
+		Map<String,Object> result =  new HashMap<String,Object>();
+		try{
+			final Map<String,Object> params = processParams(req);
+			dealerService.editDealer(params);
+			result.put("success",true);
+		}catch(Exception e){
+			logger.error("更新失败",e);
+			result.put("success",false);
+			result.put("msg", "更新失败");
+		}
+		return result;
+	}
+	
+	@RequestMapping("/add")
+	@ResponseBody
+	public Map<String,Object> add(HttpServletRequest req){
+		Map<String,Object> result =  new HashMap<String,Object>();
+		try{
+			final Map<String,Object> params = processParams(req);
+			dealerService.addDealer(params);
+			result.put("success",true);
+		}catch(Exception e){
+			logger.error("添加失败",e);
+			result.put("success",false);
+			result.put("msg", "添加失败");
+		}
+		return result;
+	}
 	
 	@SuppressWarnings("unchecked")
 	Map<String,Object> processParams(HttpServletRequest req){

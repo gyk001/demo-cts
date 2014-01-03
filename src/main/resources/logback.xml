@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="false" scan="true" scanPeriod="30 seconds">
 	<contextName>cts</contextName>
+	<!-- sends logs to logback-beagle -->
+  	<consolePlugin />
 	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
 		<withJansi>false</withJansi>
 		<encoder charset="utf-8">

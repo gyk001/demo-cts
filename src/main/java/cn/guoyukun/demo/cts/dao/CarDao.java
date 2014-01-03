@@ -1,7 +1,8 @@
 package cn.guoyukun.demo.cts.dao;
 
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;
-
+@Lazy(true)
 @Repository
 public class CarDao  extends BaseDao{
 	private static  final String _TABLE_NAME  = "car";

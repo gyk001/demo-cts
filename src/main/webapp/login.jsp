@@ -38,8 +38,8 @@
                     <td>身份:</td>
                     <td>
                         <select class="easyui-combobox" name="role">
-                        	<option value="logistics">经销商</option>
-                        	<option value="dealer">物流公司</option>
+                        	<option value="dealer">经销商</option>
+                        	<option value="logistics">物流公司</option>
                         	<option value="admin">管理员</option>
                        	</select>
                     </td>

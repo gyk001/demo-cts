@@ -52,7 +52,8 @@
                 /static/**=anon
                 /biz/**=anon
                 /style/**=anon
-                /dealer/delete/**=authc,roles[admin]
+                /dealer/delete/**=authc,roles[dealer]
+                /dealer/edit/**=authc,roles[dealer]
                 /**=authc 
             </value>  
         </property>  

@@ -39,5 +39,12 @@ public class DealerService {
 		dealerDao.deleteById(jxsdm);
 	}
 	
+	public void addDealer(Map<String,Object> info){
+		dealerDao.add(info);
+	}
+	
+	public void editDealer(Map<String,Object> info){
+		dealerDao.edit(info);
+	}
 	
 }
